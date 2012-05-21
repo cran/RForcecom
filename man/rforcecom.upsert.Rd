@@ -17,8 +17,8 @@ rforcecom.upsert(session, objectName, externalIdField, externalId, fields)
   \item{session}{ Session data. It can be retrieve from \code{\link{rforcecom.login}}. }
   \item{objectName}{ An object name. (e.g. "Account", "Contact", "CustomObject__c") }
   \item{externalIdField}{ An External Key's field name. (e.g. "AccountMaster__c") }
-  \item{externalId}{ An External Key's ID. }
-  \item{fields}{ Sets of field name and its value. }
+  \item{externalId}{ An External Key ID. }
+  \item{fields}{ A list of field names and values. (e.g. Name="CompanyName", Phone="000-000-000" ) }
 }
 
 

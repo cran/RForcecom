@@ -14,13 +14,27 @@ function(username, password, instanceURL, apiVersion){
 </env:Envelope>\n\n', sep="")
  
  # HTTP POST
- h <- basicTextGatherer()
+ h <- basicHeaderGatherer()
+ t <- basicTextGatherer()
  URL <- paste(instanceURL, rforcecom.api.getSoapEndpoint(apiVersion), sep="")
  httpHeader <- c("SOAPAction"="login","Content-Type"="text/xml")
- curlPerform(url=URL, httpheader=httpHeader, postfields=soapBody, writefunction = h$update, ssl.verifypeer=F)
+ curlPerform(url=URL, httpheader=httpHeader, postfields=soapBody, headerfunction = h$update, writefunction = t$update, ssl.verifypeer=F)
+
+ # BEGIN DEBUG
+ if(exists("rforcecom.debug") && rforcecom.debug){ message(URL) }
+ if(exists("rforcecom.debug") && rforcecom.debug){ message(t$value()) }
+ # END DEBUG
  
  # Parse XML
- x.root <- xmlRoot(xmlTreeParse(h$value(), asText=T))
+ x.root <- xmlRoot(xmlTreeParse(t$value(), asText=T))
+ 
+ # Check whether it success
+ try(faultstring <- iconv(xmlValue(x.root[['Body']][['Fault']][['faultstring']]), from="UTF-8", to=""), TRUE)
+ if(faultstring != "NA"){
+  stop(faultstring)
+ }
+ 
+ # Retrieve sessionID from XML
  sessionID <- xmlValue(x.root[['Body']][['loginResponse']][['result']][['sessionId']])
  return(c(sessionID=sessionID, instanceURL=instanceURL, apiVersion=apiVersion))
 }

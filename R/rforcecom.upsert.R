@@ -9,12 +9,34 @@ function(session, objectName, externalIdField, externalId, fields){
  xmlBody <- paste("<?xml version=\"1.0\" encoding=\"UTF-8\"?><root>", xmlElem, "</root>", sep="")
  
  # Send records
- h <- basicTextGatherer()
+ h <- basicHeaderGatherer()
+ t <- basicTextGatherer()
  endpointPath <- rforcecom.api.getExternalIdFieldEndpoint(session['apiVersion'], objectName, externalIdField, externalId)
  URL <- paste(session['instanceURL'], endpointPath, sep="")
  OAuthString <- paste("OAuth", session['sessionID'])
  httpHeader <- c("Authorization"=OAuthString, "Accept"="application/xml", 'Content-Type'="application/xml")
- resultSet <- curlPerform(url=URL, httpheader=httpHeader, writefunction = h$update, ssl.verifypeer=F, postfields=xmlBody, customrequest="PATCH")
- return(resultSet)
+ resultSet <- curlPerform(url=URL, httpheader=httpHeader, headerfunction = h$update, writefunction = t$update, ssl.verifypeer=F, postfields=xmlBody, customrequest="PATCH")
+ 
+ # BEGIN DEBUG
+ if(exists("rforcecom.debug") && rforcecom.debug){ message(URL) }
+ if(exists("rforcecom.debug") && rforcecom.debug){ message(t$value()) }
+ # END DEBUG
+ 
+ # Parse XML
+ if(t$value() != ""){
+  x.root <- xmlRoot(xmlTreeParse(t$value(), asText=T))
+  
+  # Check whether it success
+  try(errorcode <- iconv(xmlValue(x.root[['Error']][['errorCode']]), from="UTF-8", to=""), TRUE)
+  try(errormessage <- iconv(xmlValue(x.root[['Error']][['message']]), from="UTF-8", to=""), TRUE)
+  if(errorcode != "NA" && errormessage != "NA"){
+   stop(paste(errorcode, errormessage, sep=": ")) 
+  }
+  
+  # Parse XML
+  xdf <- xmlToDataFrame(getNodeSet(xmlParse(t$value()),'//Result'))
+  return(xdf)
+ }
+ 
 }
 

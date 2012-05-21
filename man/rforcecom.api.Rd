@@ -1,5 +1,6 @@
 \name{rforcecom.api}
 \alias{rforcecom.api.getSoapEndpoint}
+\alias{rforcecom.api.getRestEndpoint}
 \alias{rforcecom.api.getSoqlEndpoint}
 \alias{rforcecom.api.getSoslEndpoint}
 \alias{rforcecom.api.getObjectEndpoint}
@@ -18,6 +19,8 @@ For internal use.
 \usage{
 
 rforcecom.api.getSoapEndpoint(apiVersion)
+
+rforcecom.api.getRestEndpoint(apiVersion)
 
 rforcecom.api.getSoqlEndpoint(apiVersion)
 

@@ -14,6 +14,10 @@ function(session, objectName, fields, limit=NULL, id=NULL){
   soqlQuery <- paste(soqlQuery, " LIMIT ",limit, sep="")
  }
  
+ # BEGIN DEBUG
+ if(exists("rforcecom.debug") && rforcecom.debug){ message(soqlQuery) }
+ # END DEBUG
+ 
  # Send a query
  resultSet <- rforcecom.query(session, soqlQuery)
  return(resultSet)

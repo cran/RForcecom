@@ -77,6 +77,10 @@ rforcecom.upsert(session, objectName, externalIdField, externalId, fields)
 objectName <- "Account";
 id <- "999x000000xxxxxZZZ"
 rforcecom.delete(session, objectName, id)
+
+# Retrieve a server timestamp
+rforcecom.getServerTimestamp(session)
+
  }
 }
 \keyword{connection}
