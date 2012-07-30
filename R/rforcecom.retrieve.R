@@ -1,5 +1,9 @@
 rforcecom.retrieve <-
 function(session, objectName, fields, limit=NULL, id=NULL){
+ # Load packages
+ require(XML)
+ require(RCurl)
+ 
  # Make SOQL
  fieldList <- paste(fields, collapse=", ")
  soqlQuery <- paste("SELECT", fieldList, "FROM", objectName, sep=" ")

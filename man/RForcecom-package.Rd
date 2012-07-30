@@ -3,17 +3,17 @@
 \alias{RForcecom}
 \docType{package}
 \title{
-RForcecom provides the connection to Force.com (Salesforce.com) from R.
+RForcecom provides the connection to Force.com and Salesforce.com from R.
 }
 \description{
-RForcecom provides the connection to Force.com (Salesforce.com) from R.
+RForcecom provides the connection to Force.com and Salesforce.com from R.
 }
 \details{
 \tabular{ll}{
 Package: \tab RForcecom\cr
 Type: \tab Package\cr
-Version: \tab 0.1\cr
-Date: \tab 2012-02-29\cr
+Version: \tab 0.3\cr
+Date: \tab 2012-07-30\cr
 License: \tab BSD\cr
 LazyLoad: \tab yes\cr
 }
@@ -39,7 +39,7 @@ RCurl
 username <- "yourname@yourcompany.com"
 password <- "YourPasswordSECURITY_TOKEN"
 instanceURL <- "https://xxx.salesforce.com/"
-apiVersion <- "24.0"
+apiVersion <- "25.0"
 session <- rforcecom.login(username, password, instanceURL, apiVersion)
 
 # Execute a SOQL

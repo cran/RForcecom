@@ -26,11 +26,12 @@ Note that DO NOT FORGET your Security Token.
 
 \item{instanceURL}{
 Your SFDC domain name.
+If your SFDC instance http://na14.salesforce.com/ , set https://na14.salesforce.com/.
 }
 
 \item{apiVersion}{
 Version of the REST API and SOAP API that you want to use.
-Current API version is "24.0" (As of Feb. 2012).
+Current API version is "25.0" (As of Jul. 2012).
 }
 }
 
@@ -59,7 +60,7 @@ Current API version is "24.0" (As of Feb. 2012).
  # Sign in to the Force.com
  username <- "yourname@yourcompany.com"
  password <- "YourPasswordSECURITY_TOKEN"
- instanceURL <- "https://xxx.salesforce.com/"
+ instanceURL <- "https://xx99.salesforce.com/"
  apiVersion <- "24.0"
  session <- rforcecom.login(username, password, instanceURL, apiVersion)
  }

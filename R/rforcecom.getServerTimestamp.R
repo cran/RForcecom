@@ -1,5 +1,9 @@
 rforcecom.getServerTimestamp <-
 function(session){
+ # Load packages
+ require(XML)
+ require(RCurl)
+ 
  # Send records
  h <- basicHeaderGatherer()
  t <- basicTextGatherer()

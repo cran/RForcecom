@@ -1,5 +1,9 @@
 rforcecom.login <-
 function(username, password, instanceURL, apiVersion){
+ # Load packages
+ require(XML)
+ require(RCurl)
+ 
  # Soap Body
  soapBody <- paste('<?xml version="1.0" encoding="utf-8" ?> \
 <env:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" \
@@ -29,8 +33,9 @@ function(username, password, instanceURL, apiVersion){
  x.root <- xmlRoot(xmlTreeParse(t$value(), asText=T))
  
  # Check whether it success
+ faultstring <- NA
  try(faultstring <- iconv(xmlValue(x.root[['Body']][['Fault']][['faultstring']]), from="UTF-8", to=""), TRUE)
- if(faultstring != "NA"){
+ if(!is.na(faultstring)){
   stop(faultstring)
  }
  
