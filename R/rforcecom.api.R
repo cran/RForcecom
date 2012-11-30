@@ -14,6 +14,13 @@ rforcecom.api.getSoqlEndpoint <- function(apiVersion){
 rforcecom.api.getSoslEndpoint <- function(apiVersion){
  return(paste("services/data/v", apiVersion, "/search/?q=", sep=""))
 }
+rforcecom.api.getObjectListEndpoint <- function(apiVersion){
+ return(paste("services/data/v", apiVersion, "/sobjects/", sep=""))
+}
+rforcecom.api.getObjectDescriptionEndpoint <- function(apiVersion, objectName){
+ objectName <- gsub(" ", "%20", objectName)
+ return(paste("services/data/v", apiVersion, "/sobjects/", objectName, "/describe", sep=""))
+}
 rforcecom.api.getObjectEndpoint <- function(apiVersion, objectName){
  objectName <- gsub(" ", "%20", objectName)
  return(paste("services/data/v", apiVersion, "/sobjects/", objectName, "/", sep=""))

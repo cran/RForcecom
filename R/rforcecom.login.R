@@ -1,8 +1,8 @@
 rforcecom.login <-
 function(username, password, instanceURL, apiVersion){
  # Load packages
- require(XML)
- require(RCurl)
+ if(!require(XML)){ install.packages("XML"); stop(!require(XML)) }
+ if(!require(RCurl)){ install.packages("RCurl"); stop(!require(RCurl)) }
  
  # Soap Body
  soapBody <- paste('<?xml version="1.0" encoding="utf-8" ?> \
@@ -32,7 +32,7 @@ function(username, password, instanceURL, apiVersion){
  # Parse XML
  x.root <- xmlRoot(xmlTreeParse(t$value(), asText=T))
  
- # Check whether it success
+ # Check whether it success or not
  faultstring <- NA
  try(faultstring <- iconv(xmlValue(x.root[['Body']][['Fault']][['faultstring']]), from="UTF-8", to=""), TRUE)
  if(!is.na(faultstring)){
@@ -41,6 +41,7 @@ function(username, password, instanceURL, apiVersion){
  
  # Retrieve sessionID from XML
  sessionID <- xmlValue(x.root[['Body']][['loginResponse']][['result']][['sessionId']])
+ instanceURL <- sub('(https://[^/]+/).*', '\\1', xmlValue(x.root[['Body']][['loginResponse']][['result']][['serverUrl']]))
  return(c(sessionID=sessionID, instanceURL=instanceURL, apiVersion=apiVersion))
 }
 

@@ -3,6 +3,8 @@
 \alias{rforcecom.api.getRestEndpoint}
 \alias{rforcecom.api.getSoqlEndpoint}
 \alias{rforcecom.api.getSoslEndpoint}
+\alias{rforcecom.api.getObjectListEndpoint}
+\alias{rforcecom.api.getObjectDescriptionEndpoint}
 \alias{rforcecom.api.getObjectEndpoint}
 \alias{rforcecom.api.getRecordEndpoint}
 \alias{rforcecom.api.getFieldEndpoint}
@@ -26,6 +28,10 @@ rforcecom.api.getSoqlEndpoint(apiVersion)
 
 rforcecom.api.getSoslEndpoint(apiVersion)
 
+rforcecom.api.getObjectListEndpoint(apiVersion)
+
+rforcecom.api.getObjectDescriptionEndpoint(apiVersion, objectName)
+
 rforcecom.api.getObjectEndpoint(apiVersion, objectName)
 
 rforcecom.api.getRecordEndpoint(apiVersion, objectName, id)
@@ -37,7 +43,7 @@ rforcecom.api.getExternalIdFieldEndpoint(apiVersion, objectName, field, id)
 }
 
 \arguments{
-  \item{apiVersion}{ An REST API or SOAP API version to connect. (e.g. "24.0". As of Feb 2012) }
+  \item{apiVersion}{ An REST API or SOAP API version to connect. (e.g. "26.0". As of Dec. 2012) }
   \item{objectName}{ An object name. (e.g. Account, Contact, CustomObject__c) }
   \item{field}{ A field name. (e.g. Id, Name, Industry, AnnualRevenue) }
   \item{id}{ A record ID. (e.g. "999x000000xxxxxZZZ") }

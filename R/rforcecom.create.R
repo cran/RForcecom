@@ -1,14 +1,15 @@
 rforcecom.create <- 
 function(session, objectName, fields){
  # Load packages
- require(XML)
- require(RCurl)
+ if(!require(XML)){ install.packages("XML"); stop(!require(XML)) }
+ if(!require(RCurl)){ install.packages("RCurl"); stop(!require(RCurl)) }
  
  # Create XML node set
  rforcecom.create.createXmlNodeSet <- function(nodelist){
   xmlNodeSet <- ""
   for(i in 1:length(nodelist)){
    if(!is.null(names(nodelist[i]))){
+    if(!is.character(nodelist[i])){ nodelist[i] <- as.character(nodelist[i]) }
     nodeValue <- iconv(nodelist[i], from="", to="UTF-8")
     xmlNodeSet <- paste(xmlNodeSet, "<", names(nodelist[i]), ">", nodeValue ,"</", names(nodelist[i]), ">",sep="")
    }
@@ -20,11 +21,9 @@ function(session, objectName, fields){
  xmlElem <- ""
  if(is.data.frame(fields)){
   xmlElem <- apply(fields, 2, rforcecom.create.createXmlNodeSet)
- }
- else if(is.vector(fields)){
+ } else {
   xmlElem <- rforcecom.create.createXmlNodeSet(fields)
- }
- 
+ } 
  xmlBody <- paste("<?xml version=\"1.0\" encoding=\"UTF-8\"?><root>", xmlElem, "</root>", sep="")
  
  # Send records
@@ -32,7 +31,7 @@ function(session, objectName, fields){
  t <- basicTextGatherer()
  endpointPath <- rforcecom.api.getObjectEndpoint(session['apiVersion'], objectName)
  URL <- paste(session['instanceURL'], endpointPath, sep="")
- OAuthString <- paste("OAuth", session['sessionID'])
+ OAuthString <- paste("Bearer", session['sessionID'])
  httpHeader <- c("Authorization"=OAuthString, "Accept"="application/xml", 'Content-Type'="application/xml")
  curlPerform(url=URL, httpheader=httpHeader, headerfunction = h$update, writefunction = t$update, ssl.verifypeer=F, postfields=xmlBody)
  
@@ -45,7 +44,7 @@ function(session, objectName, fields){
  # Parse XML
  x.root <- xmlRoot(xmlTreeParse(t$value(), asText=T))
  
- # Check whether it success
+ # Check whether it success or not
  errorcode <- NA
  errormessage <- NA
  try(errorcode <- iconv(xmlValue(x.root[['Error']][['errorCode']]), from="UTF-8", to=""), TRUE)

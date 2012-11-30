@@ -1,25 +1,26 @@
-\name{rforcecom.delete}
-\alias{rforcecom.delete}
+\name{rforcecom.getObjectDescription}
+\alias{rforcecom.getObjectDescription}
 
 \title{
-Deleting a record
+Retrieve object descriptions
 }
 
 \description{
-Deleting a record
+Retrieve object descriptions
 }
 
 \usage{
-rforcecom.delete(session, objectName, id)
+rforcecom.getObjectDescription(session, objectName)
 }
 
 \arguments{
   \item{session}{ Session data. It can be retrieve from \code{\link{rforcecom.login}}. }
   \item{objectName}{ An object name. (e.g. "Account", "Contact", "CustomObject__c") }
-  \item{id}{ Record ID to retrieve. (e.g. "999x000000xxxxxZZZ") }
 }
 
-\value{ No data. }
+\value{
+Object descriptions
+}
 
 \author{
 Takekatsu Hiramura <thira@plavox.info>
@@ -27,12 +28,12 @@ Takekatsu Hiramura <thira@plavox.info>
 
 \examples{
 \dontrun{
- # Deleting a record
- objectName <- "Account";
- id <- "999x000000xxxxxZZZ" # Record's Id
- rforcecom.delete(session, objectName, id)
+ # Retrieve object descriptions
+  objectName <- "Account"
+  rforcecom.getObjectDescription(session, objectName)
  }
 }
 
 \keyword{connection}
+
 

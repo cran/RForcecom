@@ -1,15 +1,15 @@
 rforcecom.getServerTimestamp <-
 function(session){
  # Load packages
- require(XML)
- require(RCurl)
+ if(!require(XML)){ install.packages("XML"); stop(!require(XML)) }
+ if(!require(RCurl)){ install.packages("RCurl"); stop(!require(RCurl)) }
  
  # Send records
  h <- basicHeaderGatherer()
  t <- basicTextGatherer()
  endpointPath <- rforcecom.api.getRestEndpoint(session['apiVersion'])
  URL <- paste(session['instanceURL'], endpointPath, "/", sep="")
- OAuthString <- paste("OAuth", session['sessionID'])
+ OAuthString <- paste("Bearer", session['sessionID'])
  httpHeader <- c("Authorization"=OAuthString, "Accept"="application/xml", "X-PrettyPrint"="1")
  curlPerform(url=URL, httpheader=httpHeader, headerfunction = h$update, writefunction = t$update, ssl.verifypeer=F)
  

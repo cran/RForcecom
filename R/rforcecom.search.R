@@ -1,8 +1,8 @@
 rforcecom.search <-
 function(session, queryString){
  # Load packages
- require(XML)
- require(RCurl)
+ if(!require(XML)){ install.packages("XML"); stop(!require(XML)) }
+ if(!require(RCurl)){ install.packages("RCurl"); stop(!require(RCurl)) }
  
  # Retrieve XML via REST API
  h <- basicHeaderGatherer()
@@ -10,7 +10,7 @@ function(session, queryString){
  endpointPath <- rforcecom.api.getSoslEndpoint(session['apiVersion'])
  queryString <- curlEscape(paste("FIND {", queryString, "}", sep=""))
  URL <- paste(session['instanceURL'], endpointPath, queryString, sep="")
- OAuthString <- paste("OAuth", session['sessionID'])
+ OAuthString <- paste("Bearer", session['sessionID'])
  httpHeader <- c("Authorization"=OAuthString, "Accept"="application/xml")
  resultSet <- curlPerform(url=URL, httpheader=httpHeader, headerfunction = h$update, writefunction = t$update, ssl.verifypeer=F)
  
@@ -28,7 +28,7 @@ function(session, queryString){
  if(t$value() != ""){
   x.root <- xmlRoot(xmlTreeParse(t$value(), asText=T))
   
-  # Check whether it success
+  # Check whether it success or not
   errorcode <- NA
   errormessage <- NA
   try(errorcode <- iconv(xmlValue(x.root[['Error']][['errorCode']]), from="UTF-8", to=""), TRUE)

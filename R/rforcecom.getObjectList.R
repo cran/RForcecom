@@ -1,16 +1,16 @@
-rforcecom.query <-
-function(session, soqlQuery){
+rforcecom.getObjectList <-
+function(session){
  # Load packages
  if(!require(XML)){ install.packages("XML"); stop(!require(XML)) }
  if(!require(RCurl)){ install.packages("RCurl"); stop(!require(RCurl)) }
  
- # Retrieve XML via REST API
+ # Send a query
  h <- basicHeaderGatherer()
  t <- basicTextGatherer()
- endpointPath <- rforcecom.api.getSoqlEndpoint(session['apiVersion'])
- URL <- paste(session['instanceURL'], endpointPath, curlEscape(soqlQuery), sep="")
+ endpointPath <- rforcecom.api.getObjectListEndpoint(session['apiVersion'])
+ URL <- paste(session['instanceURL'], endpointPath, sep="")
  OAuthString <- paste("Bearer", session['sessionID'])
- httpHeader <- c("Authorization"=OAuthString, "Accept"="application/xml")
+ httpHeader <- c("Authorization"=OAuthString, "Accept"="application/xml", 'Content-Type'="application/xml")
  curlPerform(url=URL, httpheader=httpHeader, headerfunction = h$update, writefunction = t$update, ssl.verifypeer=F)
  
  # BEGIN DEBUG
@@ -30,18 +30,9 @@ function(session, soqlQuery){
   stop(paste(errorcode, errormessage, sep=": "))
  }
  
- # Convert XML to data frame
- xns <- getNodeSet(xmlParse(t$value()),'//records')
- xdf <- xmlToDataFrame(xns)
- xdf.iconv <- data.frame(lapply(xdf, iconv, from="UTF-8", to=""))
+ # Parse XML
+ xdf <- xmlToDataFrame(getNodeSet(xmlParse(t$value()),'//sobjects'))
+ return(xdf)
  
- # Check whether it has next record
- try(nextRecordsUrl <- iconv(xmlValue(x.root[['nextRecordsUrl']]), from="UTF-8", to=""), TRUE)
- if(!is.na(nextRecordsUrl)){
-  nextRecords <- rforcecom.queryMore(session, nextRecordsUrl)
-  xdf.iconv <- rbind(xdf.iconv, nextRecords)
- }
- 
- return(data.frame(xdf.iconv))
 }
 

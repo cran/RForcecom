@@ -31,7 +31,7 @@ If your SFDC instance http://na14.salesforce.com/ , set https://na14.salesforce.
 
 \item{apiVersion}{
 Version of the REST API and SOAP API that you want to use.
-Current API version is "25.0" (As of Jul. 2012).
+Current API version is "26.0" (As of Dec. 2012).
 }
 }
 
@@ -53,6 +53,10 @@ Current API version is "25.0" (As of Jul. 2012).
  \code{\link{rforcecom.retrieve}}
  \code{\link{rforcecom.update}}
  \code{\link{rforcecom.upsert}}
+ \code{\link{rforcecom.getServerTimestamp}}
+ \code{\link{rforcecom.getObjectDescription}}
+ \code{\link{rforcecom.getObjectList}}
+ \code{\link{rforcecom.queryMore}}
 }
 
 \examples{
@@ -61,7 +65,7 @@ Current API version is "25.0" (As of Jul. 2012).
  username <- "yourname@yourcompany.com"
  password <- "YourPasswordSECURITY_TOKEN"
  instanceURL <- "https://xx99.salesforce.com/"
- apiVersion <- "24.0"
+ apiVersion <- "26.0"
  session <- rforcecom.login(username, password, instanceURL, apiVersion)
  }
 }

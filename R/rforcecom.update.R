@@ -1,8 +1,8 @@
 rforcecom.update <-
 function(session, objectName, id, fields){
  # Load packages
- require(XML)
- require(RCurl)
+ if(!require(XML)){ install.packages("XML"); stop(!require(XML)) }
+ if(!require(RCurl)){ install.packages("RCurl"); stop(!require(RCurl)) }
  
  # Create XML
  xmlElem <- ""
@@ -21,7 +21,7 @@ function(session, objectName, id, fields){
  t <- basicTextGatherer()
  endpointPath <- rforcecom.api.getRecordEndpoint(session['apiVersion'], objectName, id)
  URL <- paste(session['instanceURL'], endpointPath, sep="")
- OAuthString <- paste("OAuth", session['sessionID'])
+ OAuthString <- paste("Bearer", session['sessionID'])
  httpHeader <- c("Authorization"=OAuthString, "Accept"="application/xml", 'Content-Type'="application/xml")
  resultSet <- curlPerform(url=URL, httpheader=httpHeader, headerfunction = h$update, writefunction = t$update, ssl.verifypeer=F, postfields=xmlBody, customrequest="PATCH")
  
@@ -34,7 +34,7 @@ function(session, objectName, id, fields){
  if(t$value() != ""){
   x.root <- xmlRoot(xmlTreeParse(t$value(), asText=T))
   
-  # Check whether it success
+  # Check whether it success or not
   errorcode <- NA
   errormessage <- NA
   try(errorcode <- iconv(xmlValue(x.root[['Error']][['errorCode']]), from="UTF-8", to=""), TRUE)
