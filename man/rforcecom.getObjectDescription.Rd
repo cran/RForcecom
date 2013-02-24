@@ -15,7 +15,7 @@ rforcecom.getObjectDescription(session, objectName)
 
 \arguments{
   \item{session}{ Session data. It can be retrieve from \code{\link{rforcecom.login}}. }
-  \item{objectName}{ An object name. (e.g. "Account", "Contact", "CustomObject__c") }
+  \item{objectName}{ An object name. (ex: "Account", "Contact", "CustomObject__c") }
 }
 
 \value{

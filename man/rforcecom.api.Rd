@@ -43,10 +43,10 @@ rforcecom.api.getExternalIdFieldEndpoint(apiVersion, objectName, field, id)
 }
 
 \arguments{
-  \item{apiVersion}{ An REST API or SOAP API version to connect. (e.g. "26.0". As of Dec. 2012) }
-  \item{objectName}{ An object name. (e.g. Account, Contact, CustomObject__c) }
-  \item{field}{ A field name. (e.g. Id, Name, Industry, AnnualRevenue) }
-  \item{id}{ A record ID. (e.g. "999x000000xxxxxZZZ") }
+  \item{apiVersion}{ An REST API or SOAP API version to connect. (ex: "26.0". As of Dec. 2012) }
+  \item{objectName}{ An object name. (ex: "Account", "Contact", "CustomObject__c") }
+  \item{field}{ A field name. (ex: "Id", "Name", "Industry", "AnnualRevenue") }
+  \item{id}{ A record ID. (ex: "999x000000xxxxxZZZ") }
 }
 
 \value{

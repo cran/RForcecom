@@ -12,8 +12,8 @@ RForcecom provides the connection to Force.com and Salesforce.com from R.
 \tabular{ll}{
 Package: \tab RForcecom\cr
 Type: \tab Package\cr
-Version: \tab 0.3\cr
-Date: \tab 2012-07-30\cr
+Version: \tab 0.5\cr
+Date: \tab 2013-02-24\cr
 License: \tab BSD\cr
 LazyLoad: \tab yes\cr
 }
@@ -50,17 +50,17 @@ rforcecom.query(session, soqlQuery)
 queryString <- "United"
 rforcecom.search(session, queryString)
 
-# Creating a record
+# Create a record
 objectName <- "Account"
 fields <- c(Name="R Analytics Service Ltd", Phone="5555-5555-5555")
 rforcecom.create(session, objectName, fields)
 
-# Retrieving a record
+# Retrieve record
 objectName <- "Account"
 fields <- c("name", "Industry", "AnnualRevenue")
 rforcecom.retrieve(session, objectName, fields)
 
-# Updating a record
+# Update a record
 objectName <- "Account"
 id <- "999x000000xxxxxZZZ"
 fields <- c(Phone="9999-9999-9999")
@@ -73,7 +73,7 @@ externalId <- "AM-00000151"
 fields <- c(Name="ABC Network Company", Phone="3333-3333-3333")
 rforcecom.upsert(session, objectName, externalIdField, externalId, fields)
 
-# Deleting a record
+# Delete a record
 objectName <- "Account";
 id <- "999x000000xxxxxZZZ"
 rforcecom.delete(session, objectName, id)

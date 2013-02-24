@@ -2,11 +2,11 @@
 \alias{rforcecom.delete}
 
 \title{
-Deleting a record
+Delete a record
 }
 
 \description{
-Deleting a record
+Delete a record
 }
 
 \usage{
@@ -15,8 +15,8 @@ rforcecom.delete(session, objectName, id)
 
 \arguments{
   \item{session}{ Session data. It can be retrieve from \code{\link{rforcecom.login}}. }
-  \item{objectName}{ An object name. (e.g. "Account", "Contact", "CustomObject__c") }
-  \item{id}{ Record ID to retrieve. (e.g. "999x000000xxxxxZZZ") }
+  \item{objectName}{ An object name. (ex: "Account", "Contact", "CustomObject__c") }
+  \item{id}{ Record ID to retrieve. (ex: "999x000000xxxxxZZZ") }
 }
 
 \value{ No data. }

@@ -2,11 +2,11 @@
 \alias{rforcecom.update}
 
 \title{
-Updating a record
+Update a record
 }
 
 \description{
-Updating a record
+Update a record
 }
 
 \usage{
@@ -15,9 +15,9 @@ rforcecom.update(session, objectName, id, fields)
 
 \arguments{
   \item{session}{ Session data. It can be retrieve from \code{\link{rforcecom.login}}. }
-  \item{objectName}{ An object name. (e.g. "Account", "Contact", "CustomObject__c") }
-  \item{id}{ Record ID to update. }
-  \item{fields}{ A list of field names and values. (e.g. Name="CompanyName", Phone="000-000-000" ) }
+  \item{objectName}{ An object name. (ex: "Account", "Contact", "CustomObject__c") }
+  \item{id}{ Record ID to update. (ex: "999x000000xxxxxZZZ") }
+  \item{fields}{ Sets of field name and its value. (ex: Name="CompanyName", Phone="000-000-000" ) }
 }
 
 \value{

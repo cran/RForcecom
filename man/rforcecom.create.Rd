@@ -2,11 +2,11 @@
 \alias{rforcecom.create}
 
 \title{
-Creating a record
+Create a record
 }
 
 \description{
-Creating a record
+Create a record
 }
 
 \usage{
@@ -15,8 +15,8 @@ rforcecom.create(session, objectName, fields)
 
 \arguments{
   \item{session}{ Session data. It can be retrieve from \code{\link{rforcecom.login}}. }
-  \item{objectName}{ An object name. (e.g. "Account", "Contact", "CustomObject__c") }
-  \item{fields}{ A list of field names and values. (e.g. Name="CompanyName", Phone="000-000-000" ) }
+  \item{objectName}{ An object name. (ex: "Account", "Contact", "CustomObject__c") }
+  \item{fields}{ Field names and values. (ex: Name="CompanyName", Phone="000-000-000" ) }
 }
 
 \value{

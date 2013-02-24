@@ -15,7 +15,7 @@ rforcecom.queryMore(session, nextRecordsUrl)
 
 \arguments{
   \item{session}{ Session data. It can be retrieve from \code{\link{rforcecom.login}}. }
-  \item{nextRecordsUrl}{ An URL for next records. (e.g. "/services/data/v26.0/query/999999999999999ZZZ-2000" ) }
+  \item{nextRecordsUrl}{ An URL for next records. (ex: "/services/data/v26.0/query/999999999999999ZZZ-2000" ) }
 }
 
 \value{

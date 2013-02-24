@@ -15,7 +15,7 @@ rforcecom.search(session, queryString)
 
 \arguments{
   \item{session}{ Session data. It can be retrieve from \code{\link{rforcecom.login}}. }
-  \item{queryString}{ Query strings to search. (e.g. "United", "Electoronics") }
+  \item{queryString}{ Query strings to search. (ex: "United", "Electoronics") }
 }
 
 \value{
