@@ -12,8 +12,8 @@ RForcecom provides the connection to Force.com and Salesforce.com from R.
 \tabular{ll}{
 Package: \tab RForcecom\cr
 Type: \tab Package\cr
-Version: \tab 0.5\cr
-Date: \tab 2013-02-24\cr
+Version: \tab 0.6\cr
+Date: \tab 2013-05-04\cr
 License: \tab BSD\cr
 LazyLoad: \tab yes\cr
 }
@@ -39,7 +39,7 @@ RCurl
 username <- "yourname@yourcompany.com"
 password <- "YourPasswordSECURITY_TOKEN"
 instanceURL <- "https://xxx.salesforce.com/"
-apiVersion <- "25.0"
+apiVersion <- "27.0"
 session <- rforcecom.login(username, password, instanceURL, apiVersion)
 
 # Execute a SOQL

@@ -32,10 +32,25 @@ function(session, soqlQuery){
  
  # Convert XML to data frame
  xns <- getNodeSet(xmlParse(t$value()),'//records')
+ resultSize <- lapply(getNodeSet(xmlParse(t$value()), "//totalSize"), xmlToList)[[1]]
  xls <- lapply(lapply(xns, xmlToList), unlist)
- xdf <- as.data.frame(do.call(rbind, xls))
- # remove field attributes
- xdf <- xdf[, !grepl('\\.attrs\\.', names(xdf))]
+ xls.rows <- length(xls)
+ xls.colnames <- unique(unlist(lapply(xls, names)))
+ xls.cols <- length(xls.colnames)
+ xdf <- data.frame(replicate(xls.cols, rep(as.character(NA), xls.rows), simplify = FALSE), stringsAsFactors = FALSE)
+ names(xdf) <- xls.colnames
+ 
+ # When it is a empty data set
+ if(nrow(xdf) == 0){ return(xdf) }
+ 
+ # Fill data from retrieved XML
+ for(i in 1:length(xls)){
+  xdf[i, names(xls[[i]])] <- t(xls[[i]])
+ }
+ # Remove field attributes
+ xdf <- subset(xdf, select=!grepl('\\.attrs\\.', names(xdf)))
+ 
+ # Convert charset from UTF-8
  xdf.iconv <- data.frame(lapply(xdf, iconv, from="UTF-8", to=""))
  
  # Check whether it has next record

@@ -1,4 +1,4 @@
-20ea069e202badd39d877b9c00208c40 *DESCRIPTION
+fba0ce0c352d5944bcda0be916e15805 *DESCRIPTION
 ea1df2b71ffef18b068d00c9b3e16811 *NAMESPACE
 cdaf5d435e5f0fbf8a18ec2844f1b823 *R/rforcecom.api.R
 f6d089278e13c584e7a493cf4d221e54 *R/rforcecom.create.R
@@ -8,13 +8,13 @@ f6d089278e13c584e7a493cf4d221e54 *R/rforcecom.create.R
 710e7740af8bcd79ccb84b7e77098d09 *R/rforcecom.getObjectList.R
 72fbc10153152aa61c953541de2ced04 *R/rforcecom.getServerTimestamp.R
 fcb30c8b670fbbf4746f9979410eeec1 *R/rforcecom.login.R
-37190e24f38a31361d759bc542b43d25 *R/rforcecom.query.R
-4f208e5ebf2f0d96aaf4aa1035e1bc4a *R/rforcecom.queryMore.R
+18936eeb934414906357f0526c8e2829 *R/rforcecom.query.R
+e0bbeafa4971160ce3b29bd8af1d93a7 *R/rforcecom.queryMore.R
 4d50c921e4f22fe399f62e1e4860fb59 *R/rforcecom.retrieve.R
 87133dc929a80665253a3fbff5c088a0 *R/rforcecom.search.R
 79ad062753b37069fa0724d939b28812 *R/rforcecom.update.R
 caa79a4cee00c6c0a15e6cec72b8b852 *R/rforcecom.upsert.R
-e854cfecaf1656036466c7e0aad2e46b *man/RForcecom-package.Rd
+c8a8d0a0826626956da494855230a39e *man/RForcecom-package.Rd
 5b6f9b48786e95a897eeb6ec5b189a1e *man/rforcecom.api.Rd
 aa6f8e65bb638721370144d4613dad93 *man/rforcecom.create.Rd
 79e46dbb38f8e14c6306217a00099478 *man/rforcecom.debug.Rd
@@ -22,7 +22,7 @@ aa6f8e65bb638721370144d4613dad93 *man/rforcecom.create.Rd
 453a8649a3d1e12902f839aca476b360 *man/rforcecom.getObjectDescription.Rd
 98fa16bbdf3ce4c7f04129423ebdd7d2 *man/rforcecom.getObjectList.Rd
 42190be0f94c24a64f7ede5a3c6331d5 *man/rforcecom.getServerTimestamp.Rd
-4db42bb1230212fa20cd09ff06d1fe55 *man/rforcecom.login.Rd
+6863ee708c0046b08763b235f7878431 *man/rforcecom.login.Rd
 8a9d553d857c3a04c7eb296ca0eb7ffd *man/rforcecom.query.Rd
 3b3c2651e9afe87da82187041e8d036f *man/rforcecom.queryMore.Rd
 874deae1459e9359fb5775d40d2043a3 *man/rforcecom.retrieve.Rd
