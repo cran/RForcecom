@@ -1,8 +1,9 @@
 rforcecom.login <-
 function(username, password, instanceURL, apiVersion){
  # Load packages
- if(!require(XML)){ install.packages("XML"); stop(!require(XML)) }
- if(!require(RCurl)){ install.packages("RCurl"); stop(!require(RCurl)) }
+ #if(!require(XML)){ install.packages("XML"); stop(!require(XML)) }
+ #if(!require(RCurl)){ install.packages("RCurl"); stop(!require(RCurl)) }
+ #if(!require(plyr)){ install.packages("plyr"); stop(!require(plyr)) }
  
  # Soap Body
  soapBody <- paste('<?xml version="1.0" encoding="utf-8" ?> \

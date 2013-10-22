@@ -10,7 +10,8 @@ Retrieve a record
 }
 
 \usage{
-rforcecom.retrieve(session, objectName, fields, limit=NULL, id=NULL, offset=NULL, order=NULL, inverse=NULL, nullsLast=NULL)
+rforcecom.retrieve(session, objectName, fields, limit=NULL, id=NULL,
+                   offset=NULL, order=NULL, inverse=NULL, nullsLast=NULL)
 }
 
 \arguments{
@@ -47,7 +48,8 @@ Takekatsu Hiramura <thira@plavox.info>
  rforcecom.retrieve(session, objectName, fields, id = "999x000000xxxxxZZZ")
  rforcecom.retrieve(session, objectName, fields)
  rforcecom.retrieve(session, objectName, fields, order = c("Industry","Name"))
- rforcecom.retrieve(session, objectName, fields, order = c("Industry","Name"), inverse=TRUE, nullsLast=TRUE)
+ rforcecom.retrieve(session, objectName, fields, order = c("Industry","Name"),
+                    inverse=TRUE, nullsLast=TRUE)
  }
 }
 

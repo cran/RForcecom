@@ -1,8 +1,9 @@
 rforcecom.retrieve <-
 function(session, objectName, fields, limit=NULL, id=NULL, offset=NULL, order=NULL, inverse=NULL, nullsLast=NULL){
  # Load packages
- if(!require(XML)){ install.packages("XML"); stop(!require(XML)) }
- if(!require(RCurl)){ install.packages("RCurl"); stop(!require(RCurl)) }
+ #if(!require(XML)){ install.packages("XML"); stop(!require(XML)) }
+ #if(!require(RCurl)){ install.packages("RCurl"); stop(!require(RCurl)) }
+ #if(!require(plyr)){ install.packages("plyr"); stop(!require(plyr)) }
  
  # Make SOQL
  fieldList <- paste(fields, collapse=", ")

@@ -1,8 +1,9 @@
 rforcecom.query <-
 function(session, soqlQuery){
  # Load packages
- if(!require(XML)){ install.packages("XML"); stop(!require(XML)) }
- if(!require(RCurl)){ install.packages("RCurl"); stop(!require(RCurl)) }
+ #if(!require(XML)){ install.packages("XML"); stop(!require(XML)) }
+ #if(!require(RCurl)){ install.packages("RCurl"); stop(!require(RCurl)) }
+ #if(!require(plyr)){ install.packages("plyr"); stop(!require(plyr)) }
  
  # Retrieve XML via REST API
  h <- basicHeaderGatherer()
@@ -57,7 +58,7 @@ function(session, soqlQuery){
  try(nextRecordsUrl <- iconv(xmlValue(x.root[['nextRecordsUrl']]), from="UTF-8", to=""), TRUE)
  if(!is.na(nextRecordsUrl)){
   nextRecords <- rforcecom.queryMore(session, nextRecordsUrl)
-  xdf.iconv <- rbind(xdf.iconv, nextRecords)
+  xdf.iconv <- rbind.fill(xdf.iconv, nextRecords)
  }
  
  return(data.frame(xdf.iconv))

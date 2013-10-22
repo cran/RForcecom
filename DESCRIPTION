@@ -2,17 +2,16 @@ Package: RForcecom
 Type: Package
 Title: RForcecom provides the connection to Force.com and
         Salesforce.com from R.
-Version: 0.6
-Date: 2013-05-04
+Version: 0.7
+Date: 2013-10-22
 Author: Takekatsu Hiramura
 Maintainer: Takekatsu Hiramura <thira@plavox.info>
-Description: RForcecom provides the connection to Force.com and
-        Salesforce.com from R.
-License: BSD
+Description: RForcecom provides the connection to Force.com and Salesforce.com from R.
+License: Apache License 2.0
 LazyLoad: yes
-Depends: XML, RCurl
+Depends: XML, RCurl, plyr
 Repository: CRAN
 URL: http://rforcecom.plavox.info/
-Packaged: 2013-05-05 05:04:54 UTC; Owner
+Packaged: 2013-10-23 15:43:55 UTC; Owner
 NeedsCompilation: no
-Date/Publication: 2013-05-05 08:28:21
+Date/Publication: 2013-10-23 18:34:06

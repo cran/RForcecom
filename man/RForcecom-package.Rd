@@ -12,8 +12,8 @@ RForcecom provides the connection to Force.com and Salesforce.com from R.
 \tabular{ll}{
 Package: \tab RForcecom\cr
 Type: \tab Package\cr
-Version: \tab 0.6\cr
-Date: \tab 2013-05-04\cr
+Version: \tab 0.7\cr
+Date: \tab 2013-10-22\cr
 License: \tab BSD\cr
 LazyLoad: \tab yes\cr
 }
@@ -32,6 +32,7 @@ http://www.salesforce.com/us/developer/docs/api/
 \seealso{
 XML
 RCurl
+plyr
 }
 \examples{
 \dontrun{
