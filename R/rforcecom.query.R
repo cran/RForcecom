@@ -1,14 +1,15 @@
+#' @export
 rforcecom.query <-
-function(session, soqlQuery){
- # Load packages
- #if(!require(XML)){ install.packages("XML"); stop(!require(XML)) }
- #if(!require(RCurl)){ install.packages("RCurl"); stop(!require(RCurl)) }
- #if(!require(plyr)){ install.packages("plyr"); stop(!require(plyr)) }
- 
+function(session, soqlQuery, queryAll=FALSE){
+
  # Retrieve XML via REST API
  h <- basicHeaderGatherer()
  t <- basicTextGatherer()
- endpointPath <- rforcecom.api.getSoqlEndpoint(session['apiVersion'])
+ if(queryAll){
+   endpointPath <- rforcecom.api.getSoqlAllEndpoint(session['apiVersion'])
+ } else {
+   endpointPath <- rforcecom.api.getSoqlEndpoint(session['apiVersion'])
+ }
  URL <- paste(session['instanceURL'], endpointPath, curlEscape(soqlQuery), sep="")
  OAuthString <- paste("Bearer", session['sessionID'])
  httpHeader <- c("Authorization"=OAuthString, "Accept"="application/xml")
@@ -52,7 +53,10 @@ function(session, soqlQuery){
  xdf <- subset(xdf, select=!grepl('\\.attrs\\.', names(xdf)))
  
  # Convert charset from UTF-8
- xdf.iconv <- data.frame(lapply(xdf, iconv, from="UTF-8", to=""))
+ xdf.iconv <- data.frame(lapply(xdf, iconv, from="UTF-8", to=""), stringsAsFactors=FALSE)
+ 
+ # Convert strings to correct data types
+ xdf.iconv <- lapply(xdf.iconv, type.convert)
  
  # Check whether it has next record
  try(nextRecordsUrl <- iconv(xmlValue(x.root[['nextRecordsUrl']]), from="UTF-8", to=""), TRUE)
