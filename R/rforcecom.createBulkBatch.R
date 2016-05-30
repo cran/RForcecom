@@ -15,8 +15,20 @@
 #' @return A \code{list} of \code{list}s, one for each batch submitted, containing 10 parameters of the batch
 #' @examples
 #' \dontrun{
-#' n <- 100
-#' my_data <- data.frame(Name=paste('New Record:', 1:n), stringsAsFactors=FALSE)
+#' 
+#' # inserting 2 records
+#' my_data <- data.frame(Name=c('New Record 1', 'New Record 2'), 
+#'                       My_External_Id__c=c('11111','22222'), 
+#'                       stringsAsFactors=FALSE)
+#' batches_info <- rforcecom.createBulkBatch(session, 
+#'                                           jobId=job_info$id, 
+#'                                           data=my_data, 
+#'                                           multiBatch=TRUE, 
+#'                                           batchSize=50)
+#' #upserting 3 records
+#' my_data <- data.frame(My_External_Id__c=c('11111','22222', '99999'), 
+#'                       Name=c('Updated_Name1', 'Updated_Name2', 'Upserted_Record'), 
+#'                       stringsAsFactors=FALSE)
 #' batches_info <- rforcecom.createBulkBatch(session, 
 #'                                           jobId=job_info$id, 
 #'                                           data=my_data, 
@@ -65,7 +77,7 @@ rforcecom.createBulkBatch <-
                         body = httr::upload_file(path=x, type='text/csv'))
       closeAllConnections()
       # Parse XML 
-      x.root <- xmlRoot(content(res, as='parsed'))
+      x.root <- xmlParse(httr::content(res, as='text', encoding='UTF-8'))
       
       # BEGIN DEBUG
       if(exists("rforcecom.debug") && rforcecom.debug){ message(URL) }

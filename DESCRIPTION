@@ -1,6 +1,6 @@
 Package: RForcecom
 Type: Package
-Version: 0.8
+Version: 0.9
 Title: Data Integration Feature for Force.com and Salesforce.com
 Description: Insert, update,
     retrieve, delete and bulk operate datasets with a SaaS based CRM
@@ -20,9 +20,9 @@ License: Apache License 2.0
 Repository: CRAN
 Date: 2015-10-26
 Collate: 'RForcecom.R' 'rforcecom.abortBulkJob.R' 'rforcecom.api.R'
-        'rforcecom.submitBulkQuery.R' 'rforcecom.getBulkQueryResult.R'
-        'rforcecom.getBatchDetails.R' 'rforcecom.createBulkJob.R'
-        'rforcecom.closeBulkJob.R' 'rforcecom.checkBatchStatus.R'
+        'rforcecom.closeBulkJob.R' 'rforcecom.getBulkQueryResult.R'
+        'rforcecom.getBatchDetails.R' 'rforcecom.checkBatchStatus.R'
+        'rforcecom.submitBulkQuery.R' 'rforcecom.createBulkJob.R'
         'rforcecom.bulkQuery.R' 'rforcecom.create.R'
         'rforcecom.createBulkBatch.R' 'rforcecom.debug.R'
         'rforcecom.delete.R' 'rforcecom.getObjectDescription.R'
@@ -31,11 +31,12 @@ Collate: 'RForcecom.R' 'rforcecom.abortBulkJob.R' 'rforcecom.api.R'
         'rforcecom.logout.R' 'rforcecom.query.R'
         'rforcecom.queryMore.R' 'rforcecom.retrieve.R'
         'rforcecom.search.R' 'rforcecom.update.R' 'rforcecom.upsert.R'
-        'rforcecom.write.csv.R'
+        'rforcecom.utils.R' 'rforcecom.write.csv.R'
+RoxygenNote: 5.0.1
 NeedsCompilation: no
-Packaged: 2015-10-26 15:12:56 UTC; takekatsu.hiramura
+Packaged: 2016-05-30 08:47:05 UTC; takekatsu.hiramura
 Author: Takekatsu Hiramura [aut, cre],
   Steven Mortimer [ctb],
   Alexis Iglauer [ctb]
 Maintainer: Takekatsu Hiramura <thira@plavox.info>
-Date/Publication: 2015-10-26 17:07:22
+Date/Publication: 2016-05-30 15:49:55
