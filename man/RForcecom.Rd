@@ -12,8 +12,8 @@ Data Integration Feature for Force.com and Salesforce.com
 \tabular{ll}{
 Package: \tab RForcecom\cr
 Type: \tab Package\cr
-Version: \tab 0.9\cr
-Date: \tab 2015-10-26\cr
+Version: \tab 1.0\cr
+Date: \tab 2016-07-01\cr
 License: \tab Apache License 2.0\cr
 LazyLoad: \tab yes\cr
 }
@@ -201,7 +201,7 @@ Bulk API Developer's Guide\cr
 \url{https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/}
 }
 \seealso{
-XML RCurl httr plyr
+XML httr plyr
 }
 \keyword{connection}
 \keyword{package}

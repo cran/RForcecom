@@ -5,18 +5,17 @@
 #' @name RForcecom
 #' @aliases RForcecom RForcecom-package
 #' @docType package
-#' @importFrom RCurl basicHeaderGatherer basicTextGatherer curlPerform curlEscape
 #' @importFrom XML xmlTreeParse xmlRoot xmlValue getNodeSet newXMLNode xmlParse xmlToDataFrame xmlToList xmlGetAttr
-#' @importFrom httr POST content upload_file add_headers
+#' @importFrom httr POST GET DELETE PATCH content upload_file add_headers headers
 #' @importFrom plyr rbind.fill ldply
-#' @importFrom utils read.csv type.convert
+#' @importFrom utils read.csv type.convert URLencode
 #' @importFrom methods as
 #' @details 
 #' \tabular{ll}{
 #' Package: \tab RForcecom\cr
 #' Type: \tab Package\cr
-#' Version: \tab 0.9\cr
-#' Date: \tab 2015-10-26\cr
+#' Version: \tab 1.0\cr
+#' Date: \tab 2016-07-01\cr
 #' License: \tab Apache License 2.0\cr
 #' LazyLoad: \tab yes\cr
 #' }
@@ -31,7 +30,7 @@
 #' Bulk API Developer's Guide\cr
 #' \url{https://developer.salesforce.com/docs/atlas.en-us.api_asynch.meta/api_asynch/}
 #' @keywords package connection
-#' @seealso XML RCurl httr plyr
+#' @seealso XML httr plyr
 #' @examples
 #' \dontrun{
 #'  # Sign in to the Force.com
